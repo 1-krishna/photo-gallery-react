@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { selectImages } from '../../redux/gallery/gallery.selector';
 import { updateGallery } from "../../redux/gallery/gallery.actions"
 import ImageItem from '../../components/image-item/image-item.component';
+import './gallery-page.styles.scss';
 
 class GalleryPage extends React.Component {
     componentDidMount() {
@@ -15,7 +16,7 @@ class GalleryPage extends React.Component {
         const { images } = this.props
         console.log('asli wala', images);
         return (
-            <div>
+            <div className='gallery-page'>
                 {
                     images.map(image => <ImageItem key={image.id} {...image} />)
                 }

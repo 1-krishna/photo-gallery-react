@@ -1,4 +1,18 @@
-img {
-    height: 200px;
-    width: 200px;
+.image-item {
+    height: 250px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+        height: 200px;
+        width: 100%;
+        margin-bottom: 2%;
+    }
+    .image-footer {
+        width: 80%;
+        height: 10%;
+        background-color: grey;
+        align-items: center;
+    }
 }
