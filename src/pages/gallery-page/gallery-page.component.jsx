@@ -7,9 +7,19 @@ import ImageItem from '../../components/image-item/image-item.component';
 import './gallery-page.styles.scss';
 
 class GalleryPage extends React.Component {
+
     componentDidMount() {
         const { updateGal } = this.props;
         fetchCurrentPageImages(2, 10).then(data => updateGal(data));
+    }
+
+    handleChange = (event) => {
+        const { updateGal } = this.props;
+        event.preventDefault();
+        let value = event.target.value;
+        value = value ? value : 10;
+        console.log(value);
+        fetchCurrentPageImages(2, value).then(data => updateGal(data));
     }
 
     render() {
@@ -17,10 +27,14 @@ class GalleryPage extends React.Component {
         console.log('asli wala', images);
         return (
             <div className='gallery-page'>
-                {
-                    images.map(image => <ImageItem key={image.id} {...image} />)
-                }
-            </div >
+                <div>Enter Image Count: <input type='number' onChange={this.handleChange} /></div>
+                <div>default is 10</div>
+                <div className='gallery-contents'>
+                    {
+                        images.map(image => <ImageItem key={image.id} {...image} />)
+                    }
+                </div >
+            </div>
         );
     }
 }
